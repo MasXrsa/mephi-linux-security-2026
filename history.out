@@ -1,0 +1,34 @@
+    1  getent passwd 1234
+    2  getent group students || groupadd students
+    3  sudo groupadd students
+    4  useradd -u 1234 -m -G students user1
+    5  sudo useradd -u 1234 -m -G students user1
+    6  sudo passwd user1
+    7  sudo chage -M 90 user1
+    8  id user1
+    9  chage -l user1
+   10  sudo chage -l user1
+   11  grep user1 /etc/passwd /etc/shadow /etc/group
+   12  find / -xdev -type f -perm -4000 -ls 2>/dev/null | tee ~/suid-files.out
+   13  ps -eo pid,ruid,euid,user,comm,args | awk 'NR==1 || ($2!=0 && $3==0)'
+   14  cp /usr/bin/cat /home/user1/cat
+   15  sudo cp /usr/bin/cat /home/user1/cat
+   16  sudo chown root:root /home/user1/cat
+   17  chmod 4755 /home/user1/cat
+   18  sudo chmod 4755 /home/user1/cat
+   19  ls -l /home/user1/cat
+   20  sudo ls -l /home/user1/cat
+   21  sudo stat /home/user1/cat
+   22  su - user1
+   23  cp /usr/bin/chown /home/user1/chown
+   24  sudo cp /usr/bin/chown /home/user1/chown
+   25  setcap cap_chown+ep /home/user1/chown
+   26  sudo setcap cap_chown+ep /home/user1/chown
+   27  sudo getcap /home/user1/chown
+   28  su - user1
+   29  visudo
+   30  sudo visudo
+   31  su - user1
+   32  mkdir -p ~/mephi-linux-security-2026
+   33  cd ~/mephi-linux-security-2026/
+   34  history > ~/history.out
